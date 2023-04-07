@@ -3,8 +3,8 @@
 
 class Game {
   constructor(height = 6, width = 7) {
-    this.HEIGHT = height; //TODO:should be lowercase
-    this.WIDTH = width;
+    this.height = height; //TODO:should be lowercase
+    this.width = width;
     this.currPlayer = 1;
     this.board = [];
 
@@ -17,8 +17,8 @@ class Game {
    */
 
   makeBoard() {
-    for (let y = 0; y < this.HEIGHT; y++) {
-      this.board.push(Array.from({ length: this.WIDTH }));
+    for (let y = 0; y < this.height; y++) {
+      this.board.push(Array.from({ length: this.width }));
     }
   }
 
@@ -33,7 +33,7 @@ class Game {
     top.setAttribute("id", "column-top");
     top.addEventListener("click", this.handleClick.bind(this));
 
-    for (let x = 0; x < this.WIDTH; x++) {
+    for (let x = 0; x < this.width; x++) {
       const headCell = document.createElement("td");
       headCell.setAttribute("id", x);
       top.append(headCell);
@@ -42,10 +42,10 @@ class Game {
     board.append(top);
 
     // make main part of board
-    for (let y = 0; y < this.HEIGHT; y++) {
+    for (let y = 0; y < this.height; y++) {
       const row = document.createElement("tr");
 
-      for (let x = 0; x < this.WIDTH; x++) {
+      for (let x = 0; x < this.width; x++) {
         const cell = document.createElement("td");
         cell.setAttribute("id", `c-${y}-${x}`);
         row.append(cell);
@@ -58,7 +58,7 @@ class Game {
   /** findSpotForCol: given column x, return top empty y (null if filled) */
 
   findSpotForCol(x) {
-    for (let y = this.HEIGHT - 1; y >= 0; y--) {
+    for (let y = this.height - 1; y >= 0; y--) {
       if (!this.board[y][x]) {
         return y;
       }
@@ -134,17 +134,17 @@ class Game {
       return cells.every(
         ([y, x]) =>
           y >= 0 &&
-          y < this.HEIGHT &&
+          y < this.height &&
           x >= 0 &&
-          x < this.WIDTH &&
+          x < this.width &&
           this.board[y][x] === this.currPlayer
       );
     }
 
     // const _newWin = _win.bind(this);
 
-    for (let y = 0; y < this.HEIGHT; y++) {
-      for (let x = 0; x < this.WIDTH; x++) {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
         // get "check list" of 4 cells (starting here) for each of the different
         // ways to win
         const horiz = [
@@ -190,8 +190,8 @@ new Game(4, 4); // assuming constructor takes height, width
 //  * board fills (tie)
 //  */
 
-// const WIDTH = 7;
-// const HEIGHT = 6;
+// const width = 7;
+// const height = 6;
 
 // let currPlayer = 1; // active player: 1 or 2
 // let board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -201,8 +201,8 @@ new Game(4, 4); // assuming constructor takes height, width
 //  */
 
 // function makeBoard() {
-//   for (let y = 0; y < HEIGHT; y++) {
-//     board.push(Array.from({ length: WIDTH }));
+//   for (let y = 0; y < height; y++) {
+//     board.push(Array.from({ length: width }));
 //   }
 // }
 
@@ -216,7 +216,7 @@ new Game(4, 4); // assuming constructor takes height, width
 //   top.setAttribute('id', 'column-top');
 //   top.addEventListener('click', handleClick);
 
-//   for (let x = 0; x < WIDTH; x++) {
+//   for (let x = 0; x < width; x++) {
 //     const headCell = document.createElement('td');
 //     headCell.setAttribute('id', x);
 //     top.append(headCell);
@@ -225,10 +225,10 @@ new Game(4, 4); // assuming constructor takes height, width
 //   board.append(top);
 
 //   // make main part of board
-//   for (let y = 0; y < HEIGHT; y++) {
+//   for (let y = 0; y < height; y++) {
 //     const row = document.createElement('tr');
 
-//     for (let x = 0; x < WIDTH; x++) {
+//     for (let x = 0; x < width; x++) {
 //       const cell = document.createElement('td');
 //       cell.setAttribute('id', `c-${y}-${x}`);
 //       row.append(cell);
@@ -241,7 +241,7 @@ new Game(4, 4); // assuming constructor takes height, width
 // /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 // function findSpotForCol(x) {
-//   for (let y = HEIGHT - 1; y >= 0; y--) {
+//   for (let y = height - 1; y >= 0; y--) {
 //     if (!board[y][x]) {
 //       return y;
 //     }
@@ -308,15 +308,15 @@ new Game(4, 4); // assuming constructor takes height, width
 //     return cells.every(
 //       ([y, x]) =>
 //         y >= 0 &&
-//         y < HEIGHT &&
+//         y < height &&
 //         x >= 0 &&
-//         x < WIDTH &&
+//         x < width &&
 //         board[y][x] === currPlayer
 //     );
 //   }
 
-//   for (let y = 0; y < HEIGHT; y++) {
-//     for (let x = 0; x < WIDTH; x++) {
+//   for (let y = 0; y < height; y++) {
+//     for (let x = 0; x < width; x++) {
 //       // get "check list" of 4 cells (starting here) for each of the different
 //       // ways to win
 //       const horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
